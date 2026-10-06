@@ -53,7 +53,9 @@ Use this repository as a starting point for managing Sigma rules as code. Engine
 
 A team can review the generated queries, map fields and log sources to its own telemetry, tune thresholds and false-positive handling, and test the results before deployment. The project itself does not ingest logs or deploy detections.
 
-![Project usage workflow: author Sigma rules, validate them in CI, convert to Splunk or Elasticsearch queries, then adapt and test in the team's SIEM](docs/images/project-usage-flow.svg)
+![Project usage workflow: author Sigma rules, validate them in CI, convert to Splunk or Elasticsearch queries, then adapt and test in the team's SIEM](docs/images/project-usage-flow.png)
+
+Download the [SVG source](docs/images/project-usage-flow.svg).
 
 ---
 
