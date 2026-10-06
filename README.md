@@ -4,6 +4,8 @@ A lightweight, portfolio-ready Detection Engineering project built around [Sigma
 
 > **Status:** Experimental portfolio project. Local validation and query conversion are documented in [`codex-review.md`](codex-review.md); no live SIEM testing has been performed.
 
+![Detection engineering project cover](docs/images/detection-engineering-cover.png)
+
 ---
 
 ## Table of Contents
@@ -90,7 +92,9 @@ flowchart TD
     I --> J[PASS / FAIL]
 ```
 
-A higher-resolution version of this diagram is available in [`diagrams/detection-pipeline.mmd`](diagrams/detection-pipeline.mmd).
+A higher-resolution version of this diagram is available in [`diagrams/detection-pipeline.mmd`](diagrams/detection-pipeline.mmd). The full validation and conversion flow is shown below.
+
+![Detection-as-code workflow from Sigma rules through CI validation to Splunk SPL and Elasticsearch Lucene output](docs/images/detection-pipeline.svg)
 
 ---
 
