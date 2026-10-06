@@ -11,6 +11,7 @@ A lightweight, portfolio-ready Detection Engineering project built around [Sigma
 ## Table of Contents
 
 - [Project Purpose](#project-purpose)
+- [Business Application](#business-application)
 - [What is Detection-as-Code?](#what-is-detection-as-code)
 - [What is Sigma?](#what-is-sigma)
 - [MITRE ATT&CK Mapping](#mitre-attck-mapping)
@@ -46,6 +47,17 @@ This repository demonstrates how a small detection engineering team can manage d
 - Automate the entire workflow with GitHub Actions.
 
 The project is intentionally lightweight: no Docker, no VMs, no databases, and no live SIEM instances are required.
+
+## Business Application
+
+A company can use this workflow to keep detection rules in version control, run automated quality checks when rules change, and generate queries for supported SIEM backends. The same approach applies across industries because the project focuses on common endpoint, identity, and server activity.
+
+![Business security operations using a shared detection engineering workflow](docs/images/business-detection-operations.png)
+
+The graphic below connects the project features to day-to-day team work. It describes potential workflow benefits; it does not claim measured incident reduction or time savings.
+
+![Business application of the detection-as-code project: business telemetry, shared Sigma rules, automated CI checks, Splunk or Elasticsearch query output, and analyst tuning](docs/images/business-value-workflow.svg)
+
 
 ---
 
