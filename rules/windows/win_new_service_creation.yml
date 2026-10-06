@@ -1,0 +1,24 @@
+title: New Windows Service Creation
+id: 2fa9f1b0-c148-44da-b444-991976a89c5f
+status: experimental
+description: Detects Windows System log Event ID 7045, emitted when the Service Control Manager records a service installation. This rule does not cover Security log Event ID 4697 because that event belongs to a different channel and collection path.
+author: Day 02 Detection Engineering Project
+date: 2026-10-06
+references:
+  - https://attack.mitre.org/techniques/T1543/003/
+tags:
+  - attack.persistence
+  - attack.privilege-escalation
+  - attack.t1543.003
+logsource:
+  product: windows
+  service: system
+detection:
+  selection:
+    EventID: 7045
+  condition: selection
+falsepositives:
+  - Legitimate software installation registering a new service.
+  - Configuration management tools deploying agents or services.
+  - System administrators installing diagnostic or monitoring services.
+level: low

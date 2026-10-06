@@ -1,0 +1,25 @@
+title: Sudo Authentication Failure Event
+id: 4dee631e-e972-42f6-9dba-2b01cca4f84b
+status: experimental
+description: Detects a sudo authentication failure message. This rule does not perform aggregation; repeated failures may warrant a separate SIEM correlation alert. A single failure does not establish an unauthorized privilege-escalation attempt.
+author: Day 02 Detection Engineering Project
+date: 2026-10-06
+references:
+  - https://attack.mitre.org/techniques/T1110/
+tags:
+  - attack.credential-access
+  - attack.t1110
+logsource:
+  product: linux
+  service: auth
+detection:
+  selection_auth_failure:
+    Message|contains:
+      - 'authentication failure'
+      - 'incorrect password'
+  condition: selection_auth_failure
+falsepositives:
+  - Administrators mistyping their sudo password.
+  - Shared accounts used by multiple operators.
+  - Scripts invoking sudo with stale credentials.
+level: medium

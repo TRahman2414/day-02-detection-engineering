@@ -1,0 +1,32 @@
+title: Linux Shell History Clearing
+id: cc3f00db-e21b-4b37-874e-dd35f3dc716f
+status: experimental
+description: Detects commands or processes used to clear or truncate shell history files, which adversaries use to hide their activity.
+author: Day 02 Detection Engineering Project
+date: 2026-10-06
+references:
+  - https://attack.mitre.org/techniques/T1070/003/
+tags:
+  - attack.defense-evasion
+  - attack.t1070.003
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection_history_files:
+    CommandLine|contains:
+      - 'history -c'
+  selection_truncate:
+    CommandLine|contains:
+      - 'rm ~/.bash_history'
+      - 'rm -f ~/.bash_history'
+      - 'rm ~/.zsh_history'
+      - 'shred -u ~/.bash_history'
+      - 'truncate -s 0 ~/.bash_history'
+      - ': > ~/.bash_history'
+  condition: selection_history_files or selection_truncate
+falsepositives:
+  - Users legitimately clearing history as part of privacy practices.
+  - Scripts or build pipelines that reset shell state between steps.
+  - Troubleshooting steps that involve history file rotation.
+level: medium

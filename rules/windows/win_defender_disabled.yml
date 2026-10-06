@@ -1,0 +1,30 @@
+title: Windows Defender Protection Disabled
+id: e9390653-103c-4086-ab6d-5808eecede27
+status: experimental
+description: Detects process command lines that attempt to disable or weaken Microsoft Defender protection settings. A matching command line shows an attempted change, not proof that the setting change succeeded.
+author: Day 02 Detection Engineering Project
+date: 2026-10-06
+references:
+  - https://attack.mitre.org/techniques/T1562/001/
+tags:
+  - attack.defense-evasion
+  - attack.t1562.001
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_commands:
+    CommandLine|contains:
+      - 'Set-MpPreference'
+      - 'DisableRealtimeMonitoring'
+      - 'DisableBehaviorMonitoring'
+      - 'DisableBlockAtFirstSeen'
+      - 'DisableIOAVProtection'
+      - 'DisableScriptScanning'
+      - 'DisableAntiSpyware'
+      - 'DisableAntiVirus'
+  condition: selection_commands
+falsepositives:
+  - Authorized IT administration temporarily disabling Defender for troubleshooting.
+  - Security tooling or approved uninstallers performing controlled changes.
+level: high

@@ -1,0 +1,34 @@
+title: Account Discovery on Linux
+id: d47bd8e0-6531-459a-97a0-9f94f50f3b63
+status: experimental
+description: Detects execution of common account discovery commands on Linux, such as listing users, groups, or sudo privileges, which may indicate adversary reconnaissance.
+author: Day 02 Detection Engineering Project
+date: 2026-10-06
+references:
+  - https://attack.mitre.org/techniques/T1087/
+  - https://attack.mitre.org/techniques/T1087/001/
+tags:
+  - attack.discovery
+  - attack.t1087
+  - attack.t1087.001
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection:
+    CommandLine|contains:
+      - 'cat /etc/passwd'
+      - 'cat /etc/shadow'
+      - 'cat /etc/group'
+      - 'getent passwd'
+      - 'getent group'
+      - 'id '
+      - 'groups'
+      - 'sudo -l'
+      - 'compgen -u'
+  condition: selection
+falsepositives:
+  - System administrators performing routine account audits.
+  - Configuration management or asset inventory tools.
+  - Troubleshooting scripts that enumerate users or groups.
+level: low

@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "day-02-detection-engineering"
+version = "0.1.0"
+description = "Lightweight Detection-as-Code Engineering Platform portfolio project"
+authors = [{name = "Day 02 Detection Engineering Project"}]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PyYAML==6.0.3",
+    "pytest==9.1.1",
+]
+
+[project.optional-dependencies]
+sigma = [
+    "sigma-cli==3.1.0",
+    "pysigma-backend-splunk==2.1.0",
+    "pysigma-backend-elasticsearch==2.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["scripts"]
+
+[tool.setuptools]
+packages = []
+py-modules = []

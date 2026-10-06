@@ -1,0 +1,26 @@
+title: Failed SSH Authentication Event
+id: e8abab48-f0bc-4f67-a534-413b4a8e5d1e
+status: experimental
+description: Detects a single failed SSH authentication event. This rule does not perform aggregation; use the documented SIEM correlation strategy to identify repeated password guessing. The event alone cannot distinguish password guessing from other authentication failures.
+author: Day 02 Detection Engineering Project
+date: 2026-10-06
+references:
+  - https://attack.mitre.org/techniques/T1110/
+tags:
+  - attack.credential-access
+  - attack.t1110
+logsource:
+  product: linux
+  service: sshd
+detection:
+  selection:
+    Message|contains:
+      - 'Failed password'
+      - 'Invalid user'
+      - 'authentication failure'
+  condition: selection
+falsepositives:
+  - Users mistyping passwords or using stale SSH keys.
+  - Automated scripts with outdated credentials.
+  - Authorized penetration testing or red-team exercises.
+level: medium

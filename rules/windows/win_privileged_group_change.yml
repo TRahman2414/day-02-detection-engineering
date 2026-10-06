@@ -1,0 +1,29 @@
+title: User Added to Privileged Local Group
+id: f194c572-ff0c-4302-a623-a85e4d7f01cd
+status: experimental
+description: Detects when a user account is added to a privileged local group such as Administrators or Backup Operators.
+author: Day 02 Detection Engineering Project
+date: 2026-10-06
+references:
+  - https://attack.mitre.org/techniques/T1098/007/
+tags:
+  - attack.persistence
+  - attack.t1098.007
+  - attack.privilege-escalation
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4732
+    TargetUserName:
+      - 'Administrators'
+      - 'Backup Operators'
+      - 'Power Users'
+      - 'Remote Desktop Users'
+  condition: selection
+falsepositives:
+  - Legitimate administrator provisioning new user accounts.
+  - IT automation or configuration management tools updating group membership.
+  - Help-desk personnel adding users to Remote Desktop Users.
+level: high

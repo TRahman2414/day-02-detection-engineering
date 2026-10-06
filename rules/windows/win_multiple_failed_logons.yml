@@ -1,0 +1,23 @@
+title: Windows Failed Logon Event
+id: 20da3a4e-c195-42d7-83da-47ef7103e581
+status: experimental
+description: Detects a single failed Windows logon event (Security Event ID 4625). This rule does not perform aggregation; use the documented SIEM correlation strategy to identify bursts of password guessing or spraying.
+author: Day 02 Detection Engineering Project
+date: 2026-10-06
+references:
+  - https://attack.mitre.org/techniques/T1110/
+tags:
+  - attack.credential-access
+  - attack.t1110
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4625
+  condition: selection
+falsepositives:
+  - Users mistyping passwords repeatedly after a password change.
+  - Misconfigured services or scripts using stale credentials.
+  - Penetration testing or authorized red-team exercises.
+level: medium

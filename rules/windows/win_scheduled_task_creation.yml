@@ -1,0 +1,36 @@
+title: Suspicious Scheduled Task Creation
+id: 51aaac0e-fdff-4043-a4b7-13e08a8efeaa
+status: experimental
+description: Detects creation of scheduled tasks that execute suspicious interpreters or run from unusual locations such as temporary or public directories.
+author: Day 02 Detection Engineering Project
+date: 2026-10-06
+references:
+  - https://attack.mitre.org/techniques/T1053/005/
+tags:
+  - attack.persistence
+  - attack.execution
+  - attack.t1053.005
+logsource:
+  product: windows
+  service: security
+detection:
+  selection_event:
+    EventID: 4698
+  selection_suspicious:
+    TaskContent|contains:
+      - 'powershell.exe'
+      - 'cmd.exe'
+      - 'wscript.exe'
+      - 'cscript.exe'
+      - 'regsvr32.exe'
+      - '.downloadstring('
+      - '.downloadfile('
+      - '%TEMP%'
+      - '%TMP%'
+      - '\\Users\\Public\\'
+  condition: selection_event and selection_suspicious
+falsepositives:
+  - Legitimate IT automation that uses scheduled tasks with scripts.
+  - Software installers creating temporary scheduled tasks.
+  - System administrators creating tasks for maintenance.
+level: medium

@@ -1,0 +1,22 @@
+flowchart TD
+    A[Detection Engineer]
+    B[Sigma Rules]
+    C[Validation]
+    D[MITRE ATT&CK Mapping]
+    E[Sigma CLI]
+    F[Splunk]
+    G[Elasticsearch]
+    H[Generated Queries]
+    I[GitHub Actions]
+    J[PASS / FAIL]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    E --> G
+    F --> H
+    G --> H
+    H --> I
+    I --> J
