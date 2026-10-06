@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="820" viewBox="0 0 1480 820" role="img" aria-labelledby="title desc">
+<title id="title">Day 02 detection engineering project workflow</title>
+<desc id="desc">This repository validates Sigma YAML rules, converts them into Splunk SPL and Elasticsearch Lucene queries, and leaves field mapping, tuning, and deployment to the SIEM team.</desc>
+<defs>
+  <style>
+    text{font-family:Inter,Arial,sans-serif}.eyebrow{font-size:15px;font-weight:700;letter-spacing:2px;fill:#61748a}.heading{font-size:34px;font-weight:700;fill:#14283f}.sub{font-size:18px;fill:#526579}.step{font-size:14px;font-weight:700;letter-spacing:1.2px;fill:#22688b}.title{font-size:23px;font-weight:700;fill:#192f46}.body{font-size:16px;fill:#485d72}.mono{font:15px ui-monospace,monospace;fill:#245a78}.note{font-size:16px;fill:#354c62}.foot{font-size:14px;fill:#53667b}
+  </style>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 8 5 1 9" fill="none" stroke="#4a87a6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="1480" height="820" rx="24" fill="#f4f7fa"/>
+<text x="72" y="68" class="eyebrow">DAY 02 · DETECTION ENGINEERING</text>
+<text x="72" y="116" class="heading">From a Sigma rule to a SIEM query</text>
+<text x="72" y="151" class="sub">The repository checks rule files and generates query examples; deployment and tuning happen in your environment.</text>
+
+<!-- first three stages -->
+<g>
+ <rect x="72" y="212" width="350" height="290" rx="14" fill="#fff" stroke="#d2dce5"/>
+ <rect x="452" y="212" width="350" height="290" rx="14" fill="#fff" stroke="#9bbdce"/>
+ <rect x="832" y="212" width="350" height="290" rx="14" fill="#fff" stroke="#d2dce5"/>
+</g>
+<path d="M422 357h24" stroke="#4a87a6" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M802 357h24" stroke="#4a87a6" stroke-width="2" marker-end="url(#arrow)"/>
+<g transform="translate(100 242)">
+ <text class="step">01 · AUTHOR</text><text y="44" class="title">Sigma rules</text>
+ <text y="85" class="body">Write portable YAML detections</text><text y="111" class="body">for Windows and Linux activity.</text>
+ <text y="161" class="mono">rules/windows/*.yml</text><text y="188" class="mono">rules/linux/*.yml</text>
+ <text y="232" class="body">Include log source, detection,</text><text y="258" class="body">ATT&amp;CK tags and false positives.</text>
+</g>
+<g transform="translate(480 242)">
+ <text class="step">02 · VALIDATE</text><text y="44" class="title">Automated checks</text>
+ <text y="85" class="body">pytest and Python validators check</text><text y="111" class="body">schema, metadata, IDs and tags.</text>
+ <text y="161" class="body">Sigma CLI parses the rule set.</text>
+ <rect x="0" y="193" width="294" height="42" rx="8" fill="#edf5f8"/><text x="15" y="220" class="mono">GitHub Actions · push / PR</text>
+ <text y="268" class="body">A failed check blocks a clean CI run.</text>
+</g>
+<g transform="translate(860 242)">
+ <text class="step">03 · CONVERT</text><text y="44" class="title">Sigma CLI + backends</text>
+ <text y="85" class="body">The same source rules are translated</text><text y="111" class="body">into the selected query formats.</text>
+ <text y="161" class="mono">scripts/convert_splunk.sh</text>
+ <text y="188" class="mono">scripts/convert_elastic.sh</text>
+ <text y="232" class="body">Conversion is local or part of CI.</text>
+</g>
+
+<!-- output branch -->
+<path d="M1182 357h36v-88h28" fill="none" stroke="#4a87a6" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M1182 357h36v104h28" fill="none" stroke="#4a87a6" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1250" y="212" width="158" height="112" rx="14" fill="#fff" stroke="#9bbdce"/>
+<text x="1272" y="249" class="step">04A</text><text x="1272" y="282" class="title" style="font-size:20px">Splunk SPL</text><text x="1272" y="306" class="mono" style="font-size:13px">output/splunk/</text>
+<rect x="1250" y="397" width="158" height="128" rx="14" fill="#fff" stroke="#c9b38c"/>
+<text x="1272" y="434" class="step">04B</text><text x="1272" y="466" class="title" style="font-size:18px">Elasticsearch</text><text x="1272" y="491" class="body" style="font-size:14px">Lucene query strings</text><text x="1272" y="514" class="mono" style="font-size:13px">output/elastic/</text>
+
+<!-- operator work -->
+<rect x="72" y="558" width="1336" height="114" rx="14" fill="#eaf0f5" stroke="#cbd7e1"/>
+<text x="100" y="594" class="step">05 · ADAPT IN YOUR SIEM</text>
+<text x="100" y="628" class="title" style="font-size:20px">Map fields and log sources · tune thresholds · check false positives · test against your logs · deploy through your own change process</text>
+<text x="72" y="724" class="note">This project does not ingest telemetry, run a live SIEM, or deploy alerts. Generated queries need environment-specific review.</text>
+<text x="72" y="766" class="foot">Example scope: 10 Sigma rules · Windows and Linux · Splunk SPL and Elasticsearch Lucene output</text>
+</svg>

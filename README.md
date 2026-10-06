@@ -4,7 +4,6 @@ A lightweight, portfolio-ready Detection Engineering project built around [Sigma
 
 > **Status:** Experimental portfolio project. Local validation and query conversion are documented in [`codex-review.md`](codex-review.md); no live SIEM testing has been performed.
 
-![Detection engineering project cover](docs/images/detection-engineering-cover.png)
 
 ---
 
@@ -50,14 +49,11 @@ The project is intentionally lightweight: no Docker, no VMs, no databases, and n
 
 ## Business Application
 
-A company can use this workflow to keep detection rules in version control, run automated quality checks when rules change, and generate queries for supported SIEM backends. The same approach applies across industries because the project focuses on common endpoint, identity, and server activity.
+Use this repository as a starting point for managing Sigma rules as code. Engineers author rules in YAML; CI checks syntax, required metadata, unique IDs, and ATT&CK tags, then Sigma CLI converts the rules into Splunk SPL and Elasticsearch Lucene query strings.
 
-![Business security operations using a shared detection engineering workflow](docs/images/business-detection-operations.png)
+A team can review the generated queries, map fields and log sources to its own telemetry, tune thresholds and false-positive handling, and test the results before deployment. The project itself does not ingest logs or deploy detections.
 
-The graphic below connects the project features to day-to-day team work. It describes potential workflow benefits; it does not claim measured incident reduction or time savings.
-
-![Business application of the detection-as-code project: business telemetry, shared Sigma rules, automated CI checks, Splunk or Elasticsearch query output, and analyst tuning](docs/images/business-value-workflow.svg)
-
+![Project usage workflow: author Sigma rules, validate them in CI, convert to Splunk or Elasticsearch queries, then adapt and test in the team's SIEM](docs/images/project-usage-flow.svg)
 
 ---
 
@@ -104,9 +100,7 @@ flowchart TD
     I --> J[PASS / FAIL]
 ```
 
-A higher-resolution version of this diagram is available in [`diagrams/detection-pipeline.mmd`](diagrams/detection-pipeline.mmd). The full validation and conversion flow is shown below.
-
-![Detection-as-code workflow from Sigma rules through CI validation to Splunk SPL and Elasticsearch Lucene output](docs/images/detection-pipeline.svg)
+A higher-resolution version of this diagram is available in [`diagrams/detection-pipeline.mmd`](diagrams/detection-pipeline.mmd). The complete usage flow is shown in [Business Application](#business-application).
 
 ---
 
