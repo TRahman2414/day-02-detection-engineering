@@ -2,7 +2,7 @@
 
 A lightweight, portfolio-ready Detection Engineering project built around [Sigma](https://sigmahq.io/) rules, MITRE ATT&CK mapping, validation-driven quality gates, and multi-SIEM query generation.
 
-> **Status:** Experimental portfolio project. Local validation and query conversion are documented in [`codex-review.md`](codex-review.md); no live SIEM testing has been performed.
+> **Status:** Experimental portfolio project. Local validation and query conversion are documented in [`review.md`](review.md); no live SIEM testing has been performed.
 
 
 ---
@@ -198,7 +198,7 @@ Converted Elasticsearch Lucene query strings are written to `output/elastic/`. T
 ```
 day-02-detection-engineering/
 ├── README.md
-├── codex-review.md
+├── review.md
 ├── report.md
 ├── LICENSE
 ├── .gitignore
