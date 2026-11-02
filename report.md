@@ -1,6 +1,6 @@
 # Build Report
 
-This file records the scope of the original Day 02 project build. For the current rule inventory, review findings, fixes, and validation results, see [`codex-review.md`](codex-review.md).
+This file records the scope of the original Day 02 project build. For the current rule inventory, review findings, fixes, and validation results, see [`review.md`](review.md).
 
 The project contains ten experimental Sigma detections (six Windows and four Linux), Python validation, pytest checks, Splunk and Elasticsearch Lucene conversion scripts, documentation, and a GitHub Actions workflow. It does not require Docker, virtual machines, a live SIEM, or system-level packages.
 
