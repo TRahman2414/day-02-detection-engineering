@@ -13,4 +13,4 @@
 - Generate conversions in a temporary directory and verify each expected output before updating generated query files.
 - Keep the distinction between locally generated Lucene/SPL text and a query that has been executed in a live SIEM.
 
-See [`codex-review.md`](../codex-review.md) for the full security and detection review, tested results, and remaining limitations.
+See [`review.md`](../review.md) for the full security and detection review, tested results, and remaining limitations.
